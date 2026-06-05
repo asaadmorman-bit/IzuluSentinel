@@ -1,0 +1,1 @@
+export { aiThreatTriage } from './allFunctions';

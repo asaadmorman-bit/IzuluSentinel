@@ -1,0 +1,1 @@
+export const LawEnforcementUnit = { id: "LEU-MOCK", status: "STANDBY" };

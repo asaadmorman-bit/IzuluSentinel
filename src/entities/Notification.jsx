@@ -1,0 +1,1 @@
+export const Notification = { id: "NTF-MOCK", read: false };

@@ -1,0 +1,1 @@
+export const ActivityLog = { id: "LOG-MOCK", action: "SYSTEM_ACCESS" };
