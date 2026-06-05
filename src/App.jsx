@@ -12,6 +12,7 @@ import AssetSentinelDashboard from './pages/AssetSentinelDashboard';
 import HubReady from './pages/HubReady';
 import EPTacticalView from './pages/EPTacticalView';
 import ActiveMissionMapPage from './pages/ActiveMissionMap';
+import IzuluDashboard from './pages/IzuluDashboard'; // Core OSINT Telemetry UI Ingestion
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 
@@ -70,6 +71,10 @@ const AuthenticatedApp = () => {
       <Route path="/HubReady" element={<LayoutWrapper currentPageName="HubReady"><HubReady /></LayoutWrapper>} />
       <Route path="/EPTacticalView" element={<LayoutWrapper currentPageName="EPTacticalView"><EPTacticalView /></LayoutWrapper>} />
       <Route path="/ActiveMissionMap" element={<LayoutWrapper currentPageName="ActiveMissionMap"><ActiveMissionMapPage /></LayoutWrapper>} />
+      
+      {/* Izulu Sentinel Engine Integration Endpoint View */}
+      <Route path="/IzuluDashboard" element={<LayoutWrapper currentPageName="IzuluDashboard"><IzuluDashboard /></LayoutWrapper>} />
+      
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
