@@ -1,11 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import base44Plugin from '@base44/vite-plugin';
-import { fileURLToPath } from 'url';
 import path from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
@@ -14,8 +10,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      // Maps the standard "@" shorthand path to your absolute src folder structure
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(path.dirname(new URL(import.meta.url).pathname), 'src'),
     },
   },
   server: {

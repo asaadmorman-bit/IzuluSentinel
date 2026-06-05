@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "backend": "node server.js",
-    "start-all": "node server.js & vite",
+    "backend": "npx tsx server.ts",
+    "start-all": "npx tsx server.ts & vite",
     "build": "vite build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

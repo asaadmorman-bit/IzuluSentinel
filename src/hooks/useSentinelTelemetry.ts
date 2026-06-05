@@ -19,25 +19,35 @@ export function useSentinelTelemetry({ tenantId, mock = false, enabled = true }:
   return useQuery<ThreatTelemetry[]>({
     queryKey: ['sentinel', 'telemetry', tenantId, mock],
     queryFn: async () => {
-      // Direct ingestion filter mapping to the Izulu Sentinel API requirements
+      const isProductionMode = import.meta.env.VITE_SENTINEL_ENV === 'production';
+      const productionUrl = import.meta.env.VITE_PRODUCTION_API_URL || 'https://izulusentinel.com';
+      
+      // Enforce strict query filter matching Rule 2 (Data Isolation)
       const params = new URLSearchParams({
         tenant_id: tenantId,
-        ...(mock && { mode: 'live' }) // or mock=true based on your specific backend flag
+        ...(mock && { mock: 'true' })
       });
 
-      const response = await fetch(`/api/v1/monitoring/domains?${params.toString()}`);
+      // If production mode is active, fetch straight from live domain; otherwise, hit local proxy
+      const targetBase = isProductionMode ? productionUrl : '';
+      const requestUrl = `${targetBase}/api/v1/monitoring/domains?${params.toString()}`;
+
+      const response = await fetch(requestUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+          // Space here to include production API Authorization tokens if required by the live domain
+        }
+      });
       
       if (!response.ok) {
-        // Rule 1: Fallback gracefully to prevent client parser runtime crashes
+        // Enforce Rule 1: Fallback gracefully to prevent THYREOS crashes
         return [];
       }
 
       const data = await response.json();
-      
-      // Secondary check: Ensure the response is strictly an array before passing to components
       return Array.isArray(data) ? data : [];
     },
     enabled: !!tenantId && enabled,
-    refetchInterval: 10000, // Pull fresh intelligence telemetry every 10 seconds
+    refetchInterval: 15000, // Poll telemetry streams every 15 seconds
   });
 }
