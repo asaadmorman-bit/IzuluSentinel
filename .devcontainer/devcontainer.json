@@ -1,0 +1,13 @@
+{
+  "name": "Izulu Sentinel Demo Environment",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Izulu Sentinel Core Engine",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "postCreateCommand": "npm install",
+  "waitFor": "onCreateCommand"
+}
