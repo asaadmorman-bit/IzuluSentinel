@@ -24,6 +24,23 @@ export const TravelRoute = {
   status: "SECURE",
 };
 
+// Mock Dataset for Drones (Used by Drones.jsx multi-import layout)
+export const Drone = {
+  id: "DRN-MOCK-ALL",
+  name: "Sentinel Quadcopter v4",
+  battery: "88%",
+  status: "LOITERING",
+  coordinates: "30.0444, 31.2357"
+};
+
+// Mock Dataset for Drone Operations (Used by Drones.jsx multi-import layout)
+export const DroneOperation = {
+  id: "OP-MOCK-ALL",
+  baseline: "STABLE",
+  trackingMode: "AUTOMATED",
+  operatorId: "USR-001"
+};
+
 // Mock Dataset for Intelligence Reports (Used by Intelligence, AdvancedSearch)
 export const IntelligenceReport = {
   id: "INT-8831",
@@ -50,6 +67,8 @@ const allEntities = {
   Incident,
   Asset,
   TravelRoute,
+  Drone,
+  DroneOperation,
   IntelligenceReport,
   TeamMember,
   User
