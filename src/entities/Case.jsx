@@ -1,3 +1,3 @@
-// src/entities/Case.jsx
+import React from 'react';
 export const Case = { id: "CASE-MOCK", status: "OPEN" };
-export const Evidence = { id: "EVID-MOCK", type: "LOG_DUMP", description: "Vulnerability analysis stream data" };
+export const Evidence = { id: "EVID-MOCK", type: "LOG_DUMP", description: "Telemetry analysis metadata streams" };
