@@ -1,0 +1,12 @@
+{
+  "system_name": "Izulu_Sentinel_Amani_Vision",
+  "sensor_array_status": "ONLINE",
+  "geofence_perimeter": {
+    "bounding_box_coordinates": [[-1.2921, 36.8219], [-1.3000, 36.8300]],
+    "alert_on_breach": true
+  },
+  "telemetry_stream": {
+    "refresh_rate_ms": 1000,
+    "encryption": "AES_256_GCM"
+  }
+}
